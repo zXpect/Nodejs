@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADS - Inicio</title>
+    <style>
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Estilos del Encabezado */
+        header {
+            background-color: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #FE8217;
+            padding: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFEED2;
+            border-radius: 8px;
+        }
+
+        /* Menú Desplegable de Paginación */
+        .menu-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+        }
+
+        .menu-button {
+            padding: 10px 15px;
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 150px;
+            background-color: #FE8217;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .menu a:hover {
+            background-color: #FE8217;
+        }
+
+        .menu.show {
+            display: block;
+        }
+
+        /* Sección Hero */
+        .hero {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 6rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #FE8217;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FE8217;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sección de Características */
+        .features {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: #FE8217;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item img {
+            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: #FE8217;
+        }
+
+        .feature-item p {
+            color: #555;
+        }
+
+        /* Sección de Muestra de la App */
+        .app-showcase {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .app-showcase h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: #FE8217;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .showcase-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 3px solid #FE8217;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Diseño Responsivo */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo img {
+                max-width: 120px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .hero-logo {
+                max-width: 150px;
+            }
+
+            .showcase-image {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="images/FontLogo.png" alt="Logo de la App">
+                </a>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#">Descargar</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">Menú</button>
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pag2">Pag2</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="images/Logo.png" alt="Logo de la App" class="hero-logo">
+                    <h1>Bienvenido a Nuestra Aplicación</h1>
+                    <p>Descubre el poder de nuestra innovadora aplicación móvil, diseñada para facilitarte la vida en cada aspecto.</p>
+                    <a href="#" class="cta-button">Descargar Ahora</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="app-info" id="caracteristicas">
+                <h2>Características</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <img src="images/feature1.png" alt="Feature 1">
+                        <h3>Función Uno</h3>
+                        <p>Descripción breve de la función uno.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="images/feature2.png" alt="Feature 2">
+                        <h3>Función Dos</h3>
+                        <p>Descripción breve de la función dos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="images/feature3.png" alt="Feature 3">
+                        <h3>Función Tres</h3>
+                        <p>Descripción breve de la función tres.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-showcase">
+            <div class="container">
+                <h2>Explora la App</h2>
+                <div class="image-container">
+                    <img src="images/app1.png" alt="App 1" class="showcase-image">
+                    <img src="images/app2.png" alt="App 2" class="showcase-image">
+                    <img src="images/app3.png" alt="App 3" class="showcase-image">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ADS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            var menu = document.getElementById('menu');
+            if (!event.target.matches('.menu-button')) {
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

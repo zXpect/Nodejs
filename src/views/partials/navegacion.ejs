@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paginación Desplegable</title>
+    <style>
+        /* Estilo general para el cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor del menú desplegable */
+        .menu-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Botón para abrir el menú */
+        .menu-button {
+            padding: 10px 15px;
+            background-color: #FF5722; /* Color naranja */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Contenedor del menú */
+        .menu {
+            display: none; /* Ocultado por defecto */
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 150px;
+            background-color: #FF5722; /* Color verde */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Lista de enlaces dentro del menú */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Enlaces del menú */
+        li {
+            margin: 0;
+        }
+
+        a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        a:hover {
+            background-color: #FF5722; /* Color verde oscuro al hacer hover */
+        }
+
+        /* Mostrar el menú al hacer clic en el botón */
+        .menu.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor del menú y botón -->
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">Menú</button>
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pag2">Pag2</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        // Función para alternar el menú desplegable
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            const menu = document.getElementById('menu');
+            if (!event.target.matches('.menu-button')) {
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

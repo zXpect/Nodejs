@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADS - Objetivos y Definición</title>
+    <style>
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Estilos del Encabezado */
+        header {
+            background-color: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #FE8217;
+            padding: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFEED2;
+            border-radius: 8px;
+        }
+
+ /* Menú Desplegable de Paginación */
+ .menu-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+        }
+
+        .menu-button {
+            padding: 10px 15px;
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 150px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .menu a:hover {
+            background-color: #45a049;
+        }
+
+        .menu.show {
+            display: block;
+        }
+
+        /* Sección de Contenido */
+        .content-section {
+            padding: 6rem 0;
+            margin-top: 60px;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            color: #FE8217;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: #FE8217;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .app-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 3px solid #FE8217;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Diseño Responsivo */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo img {
+                max-width: 120px;
+            }
+
+            .content-section h1 {
+                font-size: 2rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="images/FontLogo.png" alt="Logo de la App">
+                </a>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#definicion">Definición</a></li>
+                    <li><a href="#justificacion">Justificación</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">Menú</button>
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pag2">Pag2</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="content-section">
+        <div class="container">
+            <h1>ADS: Objetivos y Definición</h1>
+            
+            <div class="app-info" id="objetivos">
+                <h2>Objetivos</h2>
+                <p>Nuestra aplicación tiene como objetivo principal mejorar la calidad de vida de nuestros usuarios a través de la tecnología. Específicamente, buscamos:</p>
+                <ul>
+                    <li>Facilitar la gestión del tiempo y las tareas diarias</li>
+                    <li>Promover hábitos saludables y sostenibles</li>
+                    <li>Conectar a las personas con servicios locales de manera eficiente</li>
+                    <li>Proporcionar una plataforma intuitiva y accesible para todos los usuarios</li>
+                </ul>
+            </div>
+
+            <div class="app-info" id="definicion">
+                <h2>Definición de la App</h2>
+                <p>Nuestra aplicación es una solución integral que combina gestión de tareas, seguimiento de hábitos y conexión con servicios locales en una sola plataforma. Utiliza tecnología de inteligencia artificial para aprender de los patrones de los usuarios y ofrecer recomendaciones personalizadas, todo ello con una interfaz intuitiva y fácil de usar.</p>
+            </div>
+
+            <div class="app-info" id="justificacion">
+                <h2>Justificación</h2>
+                <p>En un mundo cada vez más acelerado y complejo, las personas necesitan herramientas que les ayuden a simplificar sus vidas y tomar mejores decisiones. Nuestra aplicación responde a esta necesidad al:</p>
+                <ul>
+                    <li>Unificar múltiples funcionalidades en una sola plataforma, reduciendo la necesidad de múltiples apps</li>
+                    <li>Utilizar IA para ofrecer una experiencia verdaderamente personalizada</li>
+                    <li>Fomentar la conexión con la comunidad local, apoyando a negocios y servicios de proximidad</li>
+                    <li>Promover un estilo de vida más saludable y sostenible a través de recordatorios y seguimiento de hábitos</li>
+                </ul>
+                <p>Creemos que nuestra aplicación no solo mejorará la eficiencia personal de los usuarios, sino que también contribuirá a crear comunidades más conectadas y conscientes.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ADS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            var menu = document.getElementById('menu');
+            if (!event.target.matches('.menu-button')) {
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
