@@ -5,8 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADS - Objetivos y Definición</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Estilos Generales */
+        :root {
+            --background-color: white;
+            --text-color: #333;
+            --primary-color: #FF5722;
+            --secondary-color: #FFEED2;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #FF5722;
+            --menu-bg-color: #FF5722;
+        }
+
+        [data-theme="dark"] {
+            --background-color: #1e1e1e;
+            --text-color: #ffffff;
+            --primary-color: #FF5722;
+            --secondary-color: #333;
+            --box-shadow-color: rgba(255, 255, 255, 0.1);
+            --border-color: #FF5722;
+            --menu-bg-color: #FF7043;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,8 +38,9 @@
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         a {
@@ -35,14 +57,15 @@
 
         /* Estilos del Encabezado */
         header {
-            background-color: white;
+            background-color: var(--background-color);
             padding: 0.5rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px var(--box-shadow-color);
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         header nav {
@@ -65,47 +88,84 @@
         nav ul li a {
             font-size: 1rem;
             font-weight: bold;
-            color: #FE8217;
+            color: var(--primary-color);
             padding: 0.5rem;
             transition: background-color 0.3s ease;
         }
 
         nav ul li a:hover {
-            background-color: #FFEED2;
+            background-color: var(--secondary-color);
             border-radius: 8px;
         }
 
- /* Menú Desplegable de Paginación */
- .menu-container {
+        /* Menú Desplegable de Paginación */
+        .menu-container {
             position: fixed;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             z-index: 1001;
         }
 
-        .menu-button {
-            padding: 10px 15px;
-            background-color: #FF5722;
+        .menu-button, .theme-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px var(--box-shadow-color);
+        }
+
+        .menu-button::after, .theme-toggle-btn::after {
+            content: '▼';
+            margin-left: 10px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-button.active::after, .theme-toggle-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .menu-button:hover, .theme-toggle-btn:hover {
+            background-color: var(--hover-bg-color);
+            box-shadow: 0 6px 15px var(--box-shadow-color);
+        }
+
+        .theme-toggle-btn {
+            position: fixed;
+            top: 100px; /* Se movió más abajo */
+            right: 20px;
         }
 
         .menu {
             display: none;
             position: absolute;
-            top: 50px;
+            top: 60px;
             left: 0;
-            width: 150px;
-            background-color: #4CAF50;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            background-color: var(--menu-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--box-shadow-color);
+            padding: 10px 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .menu ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
         }
@@ -116,36 +176,33 @@
 
         .menu a {
             display: block;
-            padding: 10px;
+            padding: 10px 20px;
             color: white;
             text-decoration: none;
-            text-align: left;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .menu a:hover {
-            background-color: #45a049;
-        }
-
-        .menu.show {
-            display: block;
+            background-color: var(--hover-bg-color);
         }
 
         /* Sección de Contenido */
         .content-section {
             padding: 6rem 0;
-            margin-top: 60px;
+            margin-top: 80px;
         }
 
         .content-section h1 {
             font-size: 2.5rem;
-            color: #FE8217;
+            color: var(--primary-color);
             margin-bottom: 2rem;
             text-align: center;
         }
 
         .content-section h2 {
             font-size: 2rem;
-            color: #FE8217;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
@@ -154,27 +211,32 @@
             font-size: 1.1rem;
         }
 
+        .content-section ul {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
         .app-info {
-            background-color: white;
+            background-color: var(--background-color);
             border-radius: 10px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px var(--box-shadow-color);
         }
 
         /* Pie de Página */
         footer {
-            background-color: white;
-            color: #333;
+            background-color: var(--background-color);
+            color: var(--text-color);
             text-align: center;
             padding: 1.5rem 0;
-            border-top: 3px solid #FE8217;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--border-color);
+            box-shadow: 0 -4px 10px var(--box-shadow-color);
         }
 
         footer p {
             font-size: 1rem;
-            color: #555;
+            color: var(--text-color);
         }
 
         /* Diseño Responsivo */
@@ -230,10 +292,12 @@
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/pag2">Pag2</a></li>
+                <li><a href="/pag2">Sobre nosotros</a></li>
             </ul>
         </nav>
     </div>
+
+    <button class="theme-toggle-btn" id="theme-toggle">Cambiar Tema</button>
 
     <main class="content-section">
         <div class="container">
@@ -275,20 +339,39 @@
 
     <script>
         function toggleMenu() {
-            var menu = document.getElementById('menu');
+            const menuButton = document.querySelector('.menu-button');
+            const menu = document.getElementById('menu');
             menu.classList.toggle('show');
+            menuButton.classList.toggle('active');
         }
 
         // Cerrar el menú si se hace clic fuera de él
         window.onclick = function(event) {
-            var menu = document.getElementById('menu');
+            const menuButton = document.querySelector('.menu-button');
+            const menu = document.getElementById('menu');
             if (!event.target.matches('.menu-button')) {
                 if (menu.classList.contains('show')) {
                     menu.classList.remove('show');
+                    menuButton.classList.remove('active');
                 }
             }
         }
+
+        // Cambiar Tema
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggleBtn.classList.toggle('active');
+        });
+
+        // Aplicar el tema basado en la preferencia del usuario
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            document.getElementById('theme-toggle').classList.add('active');
+        }
     </script>
 </body>
-
 </html>
